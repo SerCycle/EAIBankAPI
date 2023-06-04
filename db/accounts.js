@@ -8,6 +8,10 @@ function getAllAccounts() {
     return connectedKnex("accounts").select("*");
 };
 
+function selectAccount(id) {
+    return connectedKnex("accounts").where("account_id", id).select();
+}
+
 function deleteAccount(id) {
     return connectedKnex("accounts").where("id", id).del();
 };
@@ -20,5 +24,6 @@ module.exports = {
     createAccount,
     getAllAccounts,
     deleteAccount,
-    updateAccount
+    updateAccount,
+    selectAccount
 };
