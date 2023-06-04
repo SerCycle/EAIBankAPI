@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Virtual Account Payment</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container d-flex justify-content-center">
+        <div class="card mt-10 p-4">
+            <div class="d-flex flex-row justify-content-center mx-1">
+                <div class="price pt-3 pl-3 mb-4">
+                    <img src="data:image/png;base64,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" alt="" width="" height="30"></a>
+                </div>
+            </div>
+            <div class="input-group mb-3">
+                <input type="text" class="form-control" placeholder="Masukkan Nomor Virtual Account..">
+                <div class="input-group-append"><button class="btn btn-primary"><i class="fas fa-search"></i></button></div>
+            </div>
+        </div>	
+    </div>
+    
+</body>
+</html>
+<script>
+	fetch('http://localhost:1337/accounts')
+    .then(response => response.json())
+    .then(data => console.log(data));
+</script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+
+<style>
+
+body{
+	background-color: #E7E9F5;
+	font-family: 'Heebo', sans-serif;
+}
+
+.mt-10 {
+    margin-top: 6cm;
+}
+
+.card{
+	width: 500px;
+	border: none;
+	border-radius: 20px;
+}
+.form-control{
+	border-radius: 7px;
+	border: 1.5px solid #E3E6ED;
+}
+input.form-control:focus{
+	box-shadow: none;
+	border: 1.5px solid #E3E6ED;
+	background-color: #F7F8FD;
+	letter-spacing: 1px;
+}
+.btn-primary{
+	background-color: #5878FF!important;
+	border-radius: 7px;
+}
+.btn-primary:focus{
+	box-shadow: none;
+}
+.text{
+	font-size: 13px;
+	color: #9CA1A4;
+}
+.price{
+	background: #F5F8FD;
+	border-top-right-radius: 10px;
+	border-bottom-right-radius: 10px;
+	width: 97px;
+}
+.flex-row{
+	border: 1px solid #F2F2F4;
+	border-radius: 10px; 
+	margin: 0 1px 0;
+}
+.flex-column p{
+	font-size: 14px;
+}
+span.mb-2{
+	font-size: 12px;
+	color: #8896BD;
+}
+h5 span{
+	color: #869099;
+}
+@media screen and (max-width: 450px){
+	.card{
+		display: flex;
+		justify-content: center;
+		text-align: center;
+	}
+	.price{
+		border: none;
+		margin: 0 auto;
+	}
+}
+</style>
