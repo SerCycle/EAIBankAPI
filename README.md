@@ -43,9 +43,9 @@ localhost:1337/payments
 ```
 localhost:1337/payments/:id
 ```
-> Payment List (GET)
+> Payment Delete (Delete)
 ```
-localhost:1337/payments
+localhost:1337/payments/:id
 ```
 ### Invoice
 > Invoice Insert (POST)
