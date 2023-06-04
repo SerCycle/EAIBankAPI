@@ -8,6 +8,10 @@ function getAllInvoices() {
     return connectedKnex("invoices").select("*");
 };
 
+function selectInvoice(id) {
+    return connectedKnex("invoices").where("invoice_id", id).select();
+}
+
 function deleteInvoice(id) {
     return connectedKnex("invoices").where("id", id).del();
 };
@@ -20,5 +24,6 @@ module.exports = {
     createInvoice,
     getAllInvoices,
     deleteInvoice,
-    updateInvoice
+    updateInvoice,
+    selectInvoice
 };
