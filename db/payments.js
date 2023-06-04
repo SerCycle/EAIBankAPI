@@ -8,8 +8,12 @@ function getAllPayments() {
     return connectedKnex("payments").select("*");
 };
 
+function selectPayment(id) {
+    return connectedKnex("payments").where("payment_id", id).select();
+}
+
 function deletePayment(id) {
-    return connectedKnex("payments").where("id", id).del();
+    return connectedKnex("payments").where("payment_id", id).del();
 };
 
 function updatePayment(id, payment) {
@@ -20,5 +24,6 @@ module.exports = {
     createPayment,
     getAllPayments,
     deletePayment,
-    updatePayment
+    updatePayment,
+    selectPayment
 };
