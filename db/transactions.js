@@ -8,6 +8,10 @@ function getAllTransactions() {
     return connectedKnex("transactions").select("*");
 };
 
+function selectTransaction(id) {
+    return connectedKnex("transactions").where("transactions_id", id).select();
+}
+
 function deleteTransaction(id) {
     return connectedKnex("transactions").where("id", id).del();
 };
@@ -20,5 +24,6 @@ module.exports = {
     createTransaction,
     getAllTransactions,
     deleteTransaction,
-    updateTransaction
+    updateTransaction,
+    selectTransaction
 };
