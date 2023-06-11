@@ -105,7 +105,17 @@ app.get("/bill", (req, res) =>  {
     res.sendFile(__dirname + "/views/invoice.html");
 });
 
+app.get("/bill/:id", (req, res) =>  {
+    const billID = req.params.id;
+    res.sendFile(__dirname + "/views/invoice.html");
+});
+
 app.get("/paymentgateway", (req, res) =>  {
+    res.sendFile(__dirname + "/views/payment.html");
+});
+
+app.get("/paymentgateway/:id", (req, res) =>  {
+    const paymentID = req.params.id;
     res.sendFile(__dirname + "/views/payment.html");
 });
 

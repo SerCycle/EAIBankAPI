@@ -5,12 +5,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Virtual Account Payment</title>
-    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"> -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
-	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
 </head>
 <body>
     <div class="container d-flex justify-content-center">
@@ -22,102 +21,41 @@
             </div>
             <div class="input-group mb-3">
                 <input id="vaInput" type="text" class="form-control" placeholder="Masukkan Nomor Virtual Account..">
-                <div><button onclick="VAFunction()" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fas fa-search"></i></button></div>
+                <div class="input-group-append"><button onclick="VAFunction()" class="btn btn-primary"><i class="fas fa-search"></i></button></div>
             </div>
+			<p id="vaDataUsername"></p>
+			<p id="vaDataPlatform"></p>
         </div>	
     </div>
-
-	<!-- Modal -->
-	<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-		<div class="modal-dialog">
-		  <div class="modal-content">
-			<div class="modal-header">
-			  <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
-			  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-			</div>
-			<div id="vaData" class="modal-body"></div>
-			<form id="formHidden">
-				<input type="number" id="vaPostValue" name="vaPostValue" hidden>
-				<input type="number" id="userPostValue" name="userPostValue" hidden>
-				<input type="number" id="pricePostValue" name="pricePostValue" hidden>
-			</form>
-			<div class="modal-footer">
-			  <button type="button" class="btn btn-primary" onclick="makePayment()">Next</button>
-			</div>
-		  </div>
-		</div>
-	  </div>
     
 </body>
 </html>
-
-<!-- <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script> -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
 <script>
-	// Get Value
+	// Get value
 	function VAFunction() {
-		// Variable id data
 		let vaInput = document.querySelector("#vaInput");
-		const vaData = document.querySelector("#vaData");
-		const vaPostValue = document.getElementById("vaPostValue");
-		const userPostValue = document.getElementById("userPostValue");
-		const pricePostValue = document.getElementById("pricePostValue");
-		const apiEndPointGetVA = 'http://localhost:1337/accounts/';
-		const apiEndPointGetUser = 'http://localhost:1337/users/120204';
-
-		fetch(`${apiEndPointGetVA}${vaInput.value}`)
-			.then(response => response.json())
-			.then(data => {
-				// Process the API response data
-				console.log(data.Selected);
-				vaData.innerHTML = `Halo ${data.Selected.username}, tekan next untuk melanjutkan pembayaran ${data.Selected.platform} kamu!`;
-				vaPostValue.setAttribute('value', `${data.Selected.account_id}`);
-			})
-			.catch(error => {
-				console.error("Error:", error);
-		});
-		fetch(apiEndPointGetUser)
-			.then(response => response.json())
-			.then(data => {
-				console.log(data.Selected);
-				userPostValue.setAttribute('value', `${data.Selected.user_id}`);
-		});
-		pricePostValue.setAttribute('value', 900000);
-	};
-
-	// Post Value (payments)
-	function makePayment() {
-		const va_account_id = document.getElementById('vaPostValue').value;
-		const user_id = document.getElementById('userPostValue').value;
-		const total_price = document.getElementById('pricePostValue').value;
-		const data = {
-			va_account_id: va_account_id,
-			user_id: user_id,
-			total_price: total_price
-		};
-		var TargetLocation;
-
-		fetch('http://localhost:1337/payments', {
-			method: "POST",
-			headers: {
-				"Content-Type": "application/json"
-			},
-			body: JSON.stringify(data)
+		const vaDataUsername = document.querySelector("#vaDataUsername");
+		const vaDataPlatform = document.querySelector("#vaDataPlatform");
+		const apiEndPoint = 'http://localhost:1337/accounts/';
+		fetch(`${apiEndPoint}${vaInput.value}`)
+		.then(response => response.json())
+		.then(data => {
+			// Process the API response data
+			console.log(data.Selected);
+			vaDataUsername.innerHTML = data.Selected.username;
+			vaDataPlatform.innerHTML = data.Selected.platform;
 		})
-			.then(response => response.json())
-			.then(result => {
-			// Handle the API response
-				console.log(result);
-				TargetLocation = result.payment_id;
-				location.href =`paymentgateway/${TargetLocation}`;
-			})
-			.catch(error => {
-				console.error("Error:", error)
-			});
-	}
-</script>
+		.catch(error => {
+			console.error("Error:", error);
+		});
+	};
 	
+	// Post Value
+</script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+
 <style>
 
 body{
