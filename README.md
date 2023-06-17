@@ -7,69 +7,69 @@
 ### User
 > User Insert (POST)
 ```
-localhost:1337/users
+https://eai-bank-api.glitch.me/users
 ```
 > User List (GET)
 ```
-localhost:1337/users
+https://eai-bank-api.glitch.me/users
 ```
 > User Single Selected (GET)
 ```
-localhost:1337/users/:id
+https://eai-bank-api.glitch.me/users/:id
 ```
 ### Virtual Account
 > VA Insert (POST)
 ```
-localhost:1337/accounts
+https://eai-bank-api.glitch.me/accounts
 ```
 > VA List (GET)
 ```
-localhost:1337/accounts
+https://eai-bank-api.glitch.me/accounts
 ```
 > VA Single Selected (GET)
 ```
-localhost:1337/accounts/:id
+https://eai-bank-api.glitch.me/accounts/:id
 ```
 ### Payment
 > Payment Insert (POST)
 ```
-localhost:1337/payments
+https://eai-bank-api.glitch.me/payments
 ```
 > Payment List (GET)
 ```
-localhost:1337/payments
+https://eai-bank-api.glitch.me/payments
 ```
 > Payment Single Selected (GET)
 ```
-localhost:1337/payments/:id
+https://eai-bank-api.glitch.me/payments/:id
 ```
 > Payment Delete (Delete)
 ```
-localhost:1337/payments/:id
+https://eai-bank-api.glitch.me/payments/:id
 ```
 ### Invoice
 > Invoice Insert (POST)
 ```
-localhost:1337/invoices
+https://eai-bank-api.glitch.me/invoices
 ```
 > Invoice List (GET)
 ```
-localhost:1337/invoices
+https://eai-bank-api.glitch.me/invoices
 ```
 > Invoice Single Selected (GET)
 ```
-localhost:1337/invoices/:id
+https://eai-bank-api.glitch.me/invoices/:id
 ```
 ### Transaction
 > Transaction Insert (POST)
 ```
-localhost:1337/transactions
+https://eai-bank-api.glitch.me/transactions
 ```
 > Transaction List (GET)
 ```
-localhost:1337/transactions
+https://eai-bank-api.glitch.me/transactions
 ```
 > Transaction Single Selected (GET)
 ```
-localhost:1337/transactions/:id
+https://eai-bank-api.glitch.me/transactions/:id
 ```
